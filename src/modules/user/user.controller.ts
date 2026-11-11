@@ -42,6 +42,13 @@ const getAllUsers = async (req:Request,res:Response)=>{
 
 }
 
+//get singel user
+const getSingleUser = async(req:Request,Res:Response)=>{
+
+}
+
+
+
 
 
 export const userController = {
