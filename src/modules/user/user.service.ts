@@ -45,14 +45,24 @@ const updateUserFromDB = async(payload: IUser, id: string)=>{
     SET 
     name=COALESCE($1,name),
     password=COALESCE($2,password),
-    age=COALESCE($3,age),
-    is_active=COALESCE($4,is_active) 
+    age=COALESCE($3,age)
 
-    WHERE id=$5 RETURNING *
+    WHERE id=$4 RETURNING *
     `,
       [name, password, age, id],
     );
 
+    return result;
+}
+
+//delete user
+const deleteUserFromDB = async (id:string) =>{
+     const result = await pool.query(
+      `
+    DELETE FROM users WHERE id=$1  
+      `,
+      [id],
+    );
     return result;
 }
 
@@ -61,5 +71,6 @@ export const userService ={
     getAllUsersFromDB,
     getSingleUserFromDB,
     updateUserFromDB,
+    deleteUserFromDB,
 
 }

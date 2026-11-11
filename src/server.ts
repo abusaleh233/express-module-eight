@@ -4,12 +4,11 @@ import { initDB } from "./db";
 
  const main = () => {
 
-
-app.listen(config.port, () => {
     initDB();
 
-  console.log(`Example app listening on port ${config.port}`);
-});
+    app.listen(config.port, () => {
+      console.log(`Example app listening on port ${config.port}`);
+    });
 }
 
 main();
